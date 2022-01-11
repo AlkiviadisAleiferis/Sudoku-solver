@@ -64,9 +64,8 @@ def sudoku_solver(sudoku_start):
         solver = cp_model.CpSolver()
 
         status=solver.Solve(model)
-
+        solution_print=''
         if status == cp_model.OPTIMAL or status == cp_model.FEASIBLE:
-                solution_print=''
                 for i in range(9):
                     solution_print+='\n'
                     for j in range(9):
@@ -76,7 +75,7 @@ def sudoku_solver(sudoku_start):
                         if j==8 and (i==2 or i==5):
                             solution_print+='\n\n'
         else:
-            print('no solution')
+            solution_print+='no solution, check input numbers'
 
         return solution_print
 
